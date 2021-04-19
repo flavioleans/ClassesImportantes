@@ -21,7 +21,7 @@ namespace ThreadConsole
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine("Tarefa Principal");
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
 
             Console.ReadKey();
@@ -32,7 +32,7 @@ namespace ThreadConsole
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine("Tarefa Executada");
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
         }
     }
