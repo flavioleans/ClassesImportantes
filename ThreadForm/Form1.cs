@@ -67,6 +67,7 @@ namespace ThreadForm
 
                 //acessar diretamente de outra thread
                 lblResultado.Invoke(new Action(() => lblResultado.Text = DateTime.Now.Second.ToString()));
+                lblResultado.Invoke(new Action(() => lblResultado.ForeColor = Color.DarkRed));
             }
         }
 
