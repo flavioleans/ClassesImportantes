@@ -61,18 +61,34 @@ namespace TaskConsole
             //Task.WaitAll(tasks);
 
             //escolhendo tarefas a serem executadas
-            Task t1 = Task.Run(() => { Console.WriteLine("Comando 1"); });
-            Task t2 = Task.Run(() => { Console.WriteLine("Comando 2"); });
-            Task t3 = Task.Run(() => { Console.WriteLine("Comando 3"); });
+            //Task t1 = Task.Run(() => { Console.WriteLine("Comando 1"); });
+            //Task t2 = Task.Run(() => { Console.WriteLine("Comando 2"); });
+            //Task t3 = Task.Run(() => { Console.WriteLine("Comando 3"); });
 
-            Task.WaitAll(t1, t2, t3);
+            //Task.WaitAll(t1, t2, t3);
             #endregion
 
             // realizando tarefas com parametros e retorno e na ordem em que uma depende da outra
             //Task<int> tarefa1 = Task.Factory.StartNew(() => Dobro(5));
+            //Console.WriteLine(tarefa1.Result);
 
             //executando tarefa com retorno da anterior
+            Task<int> tarefa1 = Task.Factory.StartNew(() =>
+            {
+                return new Random().Next(10);
+            });
 
+            Task<int> tarefa2 = tarefa1.ContinueWith((num) =>
+            {
+                return num.Result * 2;
+            });
+
+            Task<string> tarefa3 = tarefa2.ContinueWith((num) =>
+            {
+                return "O valor final " + num.Result;
+            });
+
+            Console.WriteLine(tarefa3.Result);
 
             Console.ReadKey();
         }
