@@ -14,7 +14,7 @@ namespace ThreadForm
 {
     public partial class Form1 : Form
     {
-        private  delegate void AtualizarControle(Control controle, string propriedade, object valor);
+       //1 private  delegate void AtualizarControle(Control controle, string propriedade, object valor);
         Thread t;
         public Form1()
         {
@@ -36,27 +36,27 @@ namespace ThreadForm
             }
         }
 
-        private void DefinirValorPropriedade(Control controle, string propriedade, object valor)
-        {
-            if (controle.InvokeRequired) //retorna true caso controle seja atualizado pelo invoke
-            {
-                AtualizarControle d = new AtualizarControle(DefinirValorPropriedade);
-                controle.Invoke(d, new object[] { controle, propriedade, valor });
-            }
-            else
-            {
-                Type t = controle.GetType();
-                PropertyInfo[] props = t.GetProperties();
+        //1 private void DefinirValorPropriedade(Control controle, string propriedade, object valor)
+        //{
+        //    if (controle.InvokeRequired) //retorna true caso controle seja atualizado pelo invoke
+        //    {
+        //        AtualizarControle d = new AtualizarControle(DefinirValorPropriedade);
+        //        controle.Invoke(d, new object[] { controle, propriedade, valor });
+        //    }
+        //    else
+        //    {
+        //        Type t = controle.GetType();
+        //        PropertyInfo[] props = t.GetProperties();
 
-                foreach (PropertyInfo p in props)
-                {
-                    if (p.Name.ToUpper() == propriedade.ToUpper())
-                    {
-                        p.SetValue(controle, valor, null);
-                    }
-                }
-            }
-        }
+        //        foreach (PropertyInfo p in props)
+        //        {
+        //            if (p.Name.ToUpper() == propriedade.ToUpper())
+        //            {
+        //                p.SetValue(controle, valor, null);
+        //            }
+        //        }
+        //    }
+        //}
 
         private void Tarefa()
         {

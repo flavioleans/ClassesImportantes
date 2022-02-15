@@ -60,6 +60,8 @@ namespace TaskConsole
             //execultando as tarefas do Array primeiro
             //Task.WaitAll(tasks);
 
+            //Console.WriteLine("Tarefa principal");
+
             //escolhendo tarefas a serem executadas
             //Task t1 = Task.Run(() => { Console.WriteLine("Comando 1"); });
             //Task t2 = Task.Run(() => { Console.WriteLine("Comando 2"); });
